@@ -93,6 +93,24 @@ app.delete("/users/:id", (req, res) => {
   }
 });
 
+const findUsersByNameAndJob = (name, job) => {
+  return users.users_list.filter(
+    (user) => user.name === name && user.job === job
+  );
+};
+
+app.get("/users", (req, res) => {
+  const { name, job } = req.query;
+
+  if (name !== undefined && job !== undefined) {
+    res.send({
+      users_list: findUsersByNameAndJob(name, job)
+    });
+  } else {
+    res.send(users);
+  }
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
