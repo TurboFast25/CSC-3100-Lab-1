@@ -99,18 +99,6 @@ app.delete("/users/:id", (req, res) => {
   }
 });
 
-app.get("/users", (req, res) => {
-  const { name, job } = req.query;
-
-  if (name !== undefined && job !== undefined) {
-    res.send({
-      users_list: findUsersByNameAndJob(name, job)
-    });
-  } else {
-    res.send(users);
-  }
-});
-
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
