@@ -8,9 +8,12 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "npm --prefix packages/react-frontend run dev"
+		"dev": "concurrently \"npm --prefix packages/react-frontend run dev\" \"npm --prefix packages/express-backend run dev\""
 	},
 	"workspaces": [
 		"packages/*"
-	]
+	],
+	"devDependencies": {
+		"concurrently": "^10.0.5"
+	}
 }
